@@ -29,6 +29,7 @@ requirements:
     - scipy
     - six
     - libastra ==1.8.3
+    - boost
 
   run:
     - python
