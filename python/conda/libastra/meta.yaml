@@ -3,8 +3,8 @@ package:
   version: '1.8.3'
 
 source:
-  git_url: https://github.com/astra-toolbox/astra-toolbox.git
-  git_tag: v1.8.3
+  git_url: https://github.com/paskino/astra-toolbox.git
+  git_tag: numpy_versions
 
 build:
   number: 0
