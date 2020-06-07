@@ -1,16 +1,18 @@
 #!/bin/sh
 
-case `uname` in
-  Darwin*)
-    CUDA_ROOT=/usr/local/cuda
-    CC=gcc
-    CXX=g++
-    ;;
-  Linux*)
-    [ -n "$cudatoolkit" ] || exit 1
-    CUDA_ROOT=/usr/local/cuda-$cudatoolkit
-    ;;
-esac
+if [ ! -n "$CUDA_ROOT" ] ; then
+  case `uname` in
+    Darwin*)
+      CUDA_ROOT=/usr/local/cuda
+      CC=gcc
+      CXX=g++
+      ;;
+    Linux*)
+      [ -n "$cudatoolkit" ] || exit 1
+      CUDA_ROOT=/usr/local/cuda-$cudatoolkit
+      ;;
+  esac
+fi
 
 [ -x "$CUDA_ROOT" ] || exit 1
 
