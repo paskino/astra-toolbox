@@ -24,7 +24,7 @@ NVCC=$CUDA_ROOT/bin/nvcc
 EXTRA_NVCCFLAGS="--std=c++11"
 
 
-$SRC_DIR/build/linux/configure --with-install-type=prefix --with-cuda=$CUDA_ROOT --prefix=$PREFIX NVCCFLAGS="-ccbin $CC -I$PREFIX/include $EXTRA_NVCCFLAGS" CC=$CC CXX=$CXX CPPFLAGS="-I$PREFIX/include"
+$SRC_DIR/build/linux/configure --with-install-type=prefix --with-cuda=$CUDA_ROOT --prefix=$PREFIX NVCCFLAGS="-ccbin $CC -I$PREFIX/include $EXTRA_NVCCFLAGS" CC=$CC CXX=$CXX CPPFLAGS="-g -I$PREFIX/include"
 
 # Clean, because we may be re-using this source tree when building
 # multiple variants of this conda package.

@@ -1,15 +1,16 @@
 package:
   name: libastra
-  version: '1.9.9.dev0'
+  version: '1.9.9.dev0.5'
 
 source:
-  git_url: https://github.com/astra-toolbox/astra-toolbox.git
-  git_tag: master
+  path: /home/tpc56154/GitHub/astra-toolbox/
+#  git_url: https://github.com/astra-toolbox/astra-toolbox.git
+#  git_tag: master
 
 build:
   number: 0
-  string: cuda_{{ cudatoolkit }}_0 # [linux]
-
+#  string: cuda_{{ cudatoolkit }}_0 # [linux]
+  string: cuda_8_0 # [linux]
 requirements:
   build:
     - {{ compiler('c') }}    # [win or linux]
@@ -20,10 +21,10 @@ requirements:
     - libtool # [osx]
   host:
     - boost # [osx or linux]
-    - cudatoolkit {{ cudatoolkit }} # [linux]
+#    - cudatoolkit {{ cudatoolkit }} # [linux]
   run:
     # See: https://github.com/conda-forge/conda-forge.github.io/issues/687#issuecomment-460095230
-    - {{ pin_compatible('cudatoolkit', max_pin='x.x') }} # [linux]
+#    - {{ pin_compatible('cudatoolkit', max_pin='x.x') }} # [linux]
 
 about:
   home: http://www.astra-toolbox.com

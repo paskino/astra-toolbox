@@ -87,12 +87,22 @@ bool CCudaFDKAlgorithm3D::_check()
 
 
 	const CVolumeGeometry3D* volgeom = m_pReconstruction->getGeometry();
-	bool cube = true;
-	if (abs(volgeom->getPixelLengthX() / volgeom->getPixelLengthY() - 1.0) > 0.00001)
-		cube = false;
-	if (abs(volgeom->getPixelLengthX() / volgeom->getPixelLengthZ() - 1.0) > 0.00001)
-		cube = false;
-	ASTRA_CONFIG_CHECK(cube, "CUDA_FDK", "Voxels must be cubes for FDK");
+	bool cube1 = true;
+	bool cube2 = true;
+
+
+	float cf1 = abs(volgeom->getPixelLengthX() / volgeom->getPixelLengthY() - 1.0);
+	float cf2 = abs(volgeom->getPixelLengthX() / volgeom->getPixelLengthZ() - 1.0);
+
+	if (abs(volgeom->getPixelLengthX() / volgeom->getPixelLengthY() - 1.0) > 0.0001)
+		cube1 = false;
+	if (abs(volgeom->getPixelLengthX() / volgeom->getPixelLengthZ() - 1.0) > 0.0001)
+		cube2 = false;
+	
+
+	ASTRA_CONFIG_CHECK(cube1, "CUDA_FDK", "Voxels must be cubes for FDK. Got x = "  << volgeom->getPixelLengthX() << " y = " << volgeom->getPixelLengthY() << " difference = " << cf1);
+	ASTRA_CONFIG_CHECK(cube2, "CUDA_FDK", "Voxels must be cubes for FDK. Got x = "  << volgeom->getPixelLengthX() << " z = " << volgeom->getPixelLengthZ() << " difference = " << cf2);
+
 
 
 
